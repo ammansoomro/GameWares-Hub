@@ -5,14 +5,21 @@ import { Feather } from "@expo/vector-icons";
 import Carousel from "../components/Carousel";
 import Services from "../components/Services";
 import ProductItem from "../components/ProductItem";
-import { useSelector } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { getProducts } from "../ProductReducer";
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { collection, getDocs } from "firebase/firestore";
+import { useIsFocused } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { db } from "../firebase";
 const HomeScreen = ({ navigation }) => {
+    const [profilePicture, setProfilePicture] = useState(null);
+    const isFocused = useIsFocused();
+
+
     const dispatch = useDispatch();
     const [items, setItems] = useState([]);
     const product = useSelector((state) => state.product.product);
@@ -22,6 +29,19 @@ const HomeScreen = ({ navigation }) => {
 
     const [location, setLocation] = useState("We are getting your location....");
     const [locationEnabled, setLocationEnabled] = useState(false);
+
+    useEffect(() => {
+        if (isFocused) {
+            AsyncStorage.getItem('photoUri').then(picUri => setProfilePicture(picUri));
+            console.log(profilePicture);
+        }
+
+        // Clean up the effect (optional)
+        return () => {
+            AsyncStorage.getItem('photoUri').then(picUri => setProfilePicture(picUri));
+            console.log(profilePicture);
+        };
+    }, [isFocused]); // Pass isFocused as a dependency
 
     useEffect(() => {
         checkIfLocationEnabled();
@@ -68,7 +88,6 @@ const HomeScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (product.length > 0) {
-            console.log("Product is not empty");
             return;
         }
 
@@ -83,9 +102,6 @@ const HomeScreen = ({ navigation }) => {
         fetchProducts();
     }, []);
 
-    console.log(product);
-
-
     return (
         <>
             <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -98,12 +114,20 @@ const HomeScreen = ({ navigation }) => {
                         <Text style={{ fontSize: 18, fontWeight: "600" }}>Home</Text>
                         <Text>{location}</Text>
                     </Pressable>
-                    <Pressable onPress={() => navigation.navigate("Profile")} style={{ marginLeft: "auto", marginRight: 7 }}>
-                        <Image
-                            style={{ width: 40, height: 40, borderRadius: 20 }}
-                            source={{ uri: "https://lh3.googleusercontent.com/ogw/AOLn63HHBMk7eA7hcQxitjhNGr1J6Hz9zfHftVRgIkJUTQ=s64-c-mo" }}
-                        />
-                    </Pressable>
+                    {profilePicture ? (
+                        <Pressable onPress={() => navigation.navigate("Camera")} style={{ marginLeft: "auto", marginRight: 7 }}>
+                            <Image
+                                source={{ uri: profilePicture }}
+                                style={{ width: 40, height: 40, borderRadius: 20 }}
+                            />
+                        </Pressable>
+                    ) : (
+                        <Pressable onPress={() => navigation.navigate("Camera")} style={{ marginLeft: "auto", marginRight: 7 }}>
+                            <Image
+                                style={{ width: 40, height: 40, borderRadius: 20 }}
+                                source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/9/91/PlayStation_App_Icon.jpg" }}
+                            />
+                        </Pressable>)}
                 </View>
 
                 {/* Search Bar */}

@@ -38,7 +38,6 @@ const RegisterScreen = () => {
         );
       }
       createUserWithEmailAndPassword(auth,email,password).then((userCredential) => {
-        console.log("user credential",userCredential);
         const user = userCredential._tokenResponse.email;
         const myUserUid = auth.currentUser.uid;
 
