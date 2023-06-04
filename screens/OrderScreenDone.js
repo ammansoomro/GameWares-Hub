@@ -18,7 +18,10 @@ const OrderScreen = () => {
   const sendNotification = async () => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
+
       let finalStatus = existingStatus;
+
+      // Ask for permission if not granted
       if (existingStatus !== 'granted') {
         const { status } = await Notifications.requestPermissionsAsync();
         finalStatus = status;
@@ -29,19 +32,22 @@ const OrderScreen = () => {
         return;
       }
 
+      // Get the push token
       const pushToken = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log('Push token:', pushToken);
 
+      // Send a notification using the obtained token
+      // Replace "YOUR_SERVER_KEY" with your Firebase Cloud Messaging server key
 
-      const response = await fetch('https://exp.host/--/api/v2/push/send', {
+      const response = await fetch('https://fcm.googleapis.com/fcm/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'key=AAAA0CloAhc:APA91bEHpliPd7ZHODj6CKqclyszZNdfRjX-bi-6hMucVuBxN-EpHHsVNdX0JApzvsT5MT1ZysA77ESl5s5dKNzC_be_wW3ZizW2lIz-X8mg6-gPMNKQJ1atE0OZLFKq-Z0izA0s6d1n',
         },
         body: JSON.stringify({
           to: pushToken,
           title: 'Order Placed',
-          body: 'Your order haser been placed successfully.',
+          body: 'Your order has been placed successfully.',
           sound: 'default',
           priority: 'high',
           vibrate: true,
@@ -57,13 +63,7 @@ const OrderScreen = () => {
       console.log('Error sending notification:', error);
     }
   };
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
-    }),
-  });
+
   return (
     <SafeAreaView>
       <View
