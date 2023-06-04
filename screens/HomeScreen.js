@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 import { getProducts } from "../ProductReducer";
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { collection, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -91,10 +91,13 @@ const HomeScreen = ({ navigation }) => {
             <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
                 <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
                     <Ionicons name="ios-location" size={22} color="#0171CD" style={{ padding: 3 }} />
-                    <View>
+                    <Pressable
+                        // Onn Press navigate to Map Screen
+                        onPress={() => navigation.navigate("Map")}
+                    >
                         <Text style={{ fontSize: 18, fontWeight: "600" }}>Home</Text>
                         <Text>{location}</Text>
-                    </View>
+                    </Pressable>
                     <Pressable onPress={() => navigation.navigate("Profile")} style={{ marginLeft: "auto", marginRight: 7 }}>
                         <Image
                             style={{ width: 40, height: 40, borderRadius: 20 }}
@@ -149,8 +152,8 @@ const HomeScreen = ({ navigation }) => {
                     style={{
                         backgroundColor: "#0171CD",
                         padding: 10,
-                        marginBottom: 40,
-                        margin: 15,
+                        marginBottom: 20,
+                        marginHorizontal: 10,
                         borderRadius: 7,
                         flexDirection: "row",
                         alignItems: "center",

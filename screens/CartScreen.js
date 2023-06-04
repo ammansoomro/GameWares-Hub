@@ -46,7 +46,6 @@ const CartScreen = () => {
     <>
       <SafeAreaView
         style={{
-          padding: 10,
           flexDirection: "row",
           alignItems: "center",
         }}
@@ -59,15 +58,30 @@ const CartScreen = () => {
         />
         <Text>Home Page</Text>
       </SafeAreaView>
-      <ScrollView style={{ marginTop: 50 }}>
+      <ScrollView >
         {total === 0 ? (
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <Text style={{ marginTop: 40 }}>Your cart is empty</Text>
           </View>
         ) : (
           <>
-
-
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text style={{
+                fontSize: 25,
+                fontWeight: 'bold',
+                marginLeft: 10,
+                padding: 15,
+                marginTop: -15,
+                color: '#0C5A9A'
+              }}>
+                Your Receipt</Text>
+            </View>
             <Pressable
               style={{
                 backgroundColor: "white",
@@ -112,7 +126,7 @@ const CartScreen = () => {
                       <Text
                         style={{
                           fontSize: 20,
-                          color: "#088F8F",
+                          color: "#1178B5",
                           paddingHorizontal: 6,
                           fontWeight: "600",
                         }}
@@ -125,7 +139,7 @@ const CartScreen = () => {
                       <Text
                         style={{
                           fontSize: 19,
-                          color: "#088F8F",
+                          color: "#1178B5",
                           paddingHorizontal: 8,
                           fontWeight: "600",
                         }}
@@ -143,7 +157,7 @@ const CartScreen = () => {
                       <Text
                         style={{
                           fontSize: 20,
-                          color: "#088F8F",
+                          color: "#1178B5",
                           paddingHorizontal: 6,
                           fontWeight: "600",
                         }}
@@ -185,7 +199,7 @@ const CartScreen = () => {
                     Item Total
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "400" }}>
-                    ₹{total}
+                    ${total}
                   </Text>
                 </View>
 
@@ -200,13 +214,13 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "400", color: "gray" }}
                   >
-                    Delivery Fee | 1.2KM
+                    Delivery Fee
                   </Text>
                   <Text
                     style={{
                       fontSize: 18,
-                      fontWeight: "400",
-                      color: "#088F8F",
+                      fontWeight: "500",
+                      color: "#1178B5",
                     }}
                   >
                     FREE
@@ -230,6 +244,8 @@ const CartScreen = () => {
                   }}
                 />
 
+
+
                 <View
                   style={{
                     flexDirection: "row",
@@ -241,37 +257,14 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
                   >
-                    selected Date
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontWeight: "400",
-                      color: "#088F8F",
-                    }}
-                  >
-                    {/* {route.params.pickUpDate} */}
-                  </Text>
-                </View>
-
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Text
-                    style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
-                  >
                     No Of Days
                   </Text>
 
                   <Text
                     style={{
                       fontSize: 18,
-                      fontWeight: "400",
-                      color: "#088F8F",
+                      fontWeight: "500",
+                      color: "#1178B5",
                     }}
                   >
                     {route.params.no_Of_days}
@@ -289,14 +282,14 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
                   >
-                    selected Pick Up Time
+                    Pick Up Time
                   </Text>
 
                   <Text
                     style={{
                       fontSize: 18,
-                      fontWeight: "400",
-                      color: "#088F8F",
+                      fontWeight: "500",
+                      color: "#1178B5",
                     }}
                   >
                     {route.params.selectedTime}
@@ -323,7 +316,7 @@ const CartScreen = () => {
                     To Pay
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {total + 95}
+                    ${total}
                   </Text>
                 </View>
               </View>
@@ -332,42 +325,36 @@ const CartScreen = () => {
         )}
       </ScrollView>
 
-      {total === 0 ? null : (
+      {total === 0 ? (
+        null
+      ) : (
         <Pressable
           style={{
-            backgroundColor: "#088F8F",
-            marginTop: "auto",
+            backgroundColor: "#0171CD",
             padding: 10,
-            marginBottom: 40,
-            margin: 15,
+            marginBottom: 20,
+            marginHorizontal: 10,
             borderRadius: 7,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
+            marginTop: "auto"
           }}
         >
           <View>
-            <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>
-              {cart.length} items | $ {total}
-            </Text>
-            <Text
-              style={{
-                fontSize: 15,
-                fontWeight: "400",
-                color: "white",
-                marginVertical: 6,
-              }}
-            >
-              extra charges might apply
-            </Text>
+            <Text style={{ fontSize: 16, fontWeight: "600", color: "white" }}>{cart.length} items |  $ {total}</Text>
           </View>
-
-          <Pressable onPress={placeOrder}>
-            <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>
-              Place Order
-            </Text>
+          <Pressable onPress={placeOrder}
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text style={{ fontSize: 17, fontWeight: "600", color: "white", paddingHorizontal: 7 }}>CheckOut</Text>
+            <Ionicons name="cart" size={20} color="white" />
           </Pressable>
+
         </Pressable>
+
       )}
     </>
   );

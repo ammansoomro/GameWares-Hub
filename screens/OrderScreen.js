@@ -32,7 +32,7 @@ const OrderScreen = ({ navigation }) => {
         }}
         autoPlay
         loop={true}
-        speed={0.7}
+        speed={1}
       />
 
       <Text
