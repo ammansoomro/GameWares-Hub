@@ -58,3 +58,6 @@ const CameraComponent = () => {
 };
 
 export default CameraComponent;
+
+
+// 'Authorization': 'key=AAAA0CloAhc:APA91bEHpliPd7ZHODj6CKqclyszZNdfRjX-bi-6hMucVuBxN-EpHHsVNdX0JApzvsT5MT1ZysA77ESl5s5dKNzC_be_wW3ZizW2lIz-X8mg6-gPMNKQJ1atE0OZLFKq-Z0izA0s6d1n',

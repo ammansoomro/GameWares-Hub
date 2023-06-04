@@ -43,7 +43,7 @@ const PickUpScreen = () => {
   return (
     <>
 
-      <SafeAreaView>
+      <ScrollView>
         <View
           style={{
             padding: 10,
@@ -129,7 +129,7 @@ const PickUpScreen = () => {
             ))}
           </ScrollView>
         </View>
-      </SafeAreaView>
+      </ScrollView>
 
       {total === 0 ? (
         null

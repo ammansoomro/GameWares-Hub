@@ -42,7 +42,7 @@ const OrderScreen = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'key=BC-Bs6uEoiN-Y0TWm4gxPVadm01jXxQbc0bXdBiJohAN30Q2aoJ_Gewk-55K32K0Qr0cxFmzoy5zlqsa9rTynCk',
+          'Authorization': 'key=AAAA0CloAhc:APA91bEHpliPd7ZHODj6CKqclyszZNdfRjX-bi-6hMucVuBxN-EpHHsVNdX0JApzvsT5MT1ZysA77ESl5s5dKNzC_be_wW3ZizW2lIz-X8mg6-gPMNKQJ1atE0OZLFKq-Z0izA0s6d1n',
         },
         body: JSON.stringify({
           to: pushToken,
@@ -110,5 +110,3 @@ const OrderScreen = () => {
 };
 
 export default OrderScreen;
-
-const styles = StyleSheet.create({});

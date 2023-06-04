@@ -29,8 +29,8 @@ const Services = () => {
 
     ];
     return (
-        <View style={{ padding: 10 }}>
-            <Text style={{ fontSize: 16, fontWeight: "500", marginBottom: 7 }}>Services Available</Text>
+        <View style={{ padding: 5 }}>
+            <Text style={{ fontSize: 16, fontWeight: "500", marginBottom: 5 }}>Services Available</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {services.map((service, index) => (
                     <TouchableOpacity style={{ margin: 10, backgroundColor: "white", padding: 20, borderRadius: 7 }} key={index}>

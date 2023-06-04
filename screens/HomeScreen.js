@@ -104,8 +104,8 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <>
-            <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-                <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
+            <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+                <SafeAreaView style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
                     <Ionicons name="ios-location" size={22} color="#0171CD" style={{ padding: 3 }} />
                     <Pressable
                         // Onn Press navigate to Map Screen
@@ -128,7 +128,7 @@ const HomeScreen = ({ navigation }) => {
                                 source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/9/91/PlayStation_App_Icon.jpg" }}
                             />
                         </Pressable>)}
-                </View>
+                </SafeAreaView>
 
                 {/* Search Bar */}
                 <View
@@ -155,9 +155,9 @@ const HomeScreen = ({ navigation }) => {
 
 
                 {/* Products */}
-                <View style={{ padding: 10, flex: 1, textAlign: "center", justifyContent: "center" }}>
+                <ScrollView style={{ padding: 10, flex: 1, textAlign: "center"}}>
                     <Text style={{ fontSize: 18, fontWeight: "bold", padding: 10, textAlign: "center", justifyContent: "center" }}>Highlighted Products</Text>
-                    <ScrollView style={{ height: "100%", flex: 1 }}
+                    <ScrollView style={{ height: "70%", flex: 1 }}
                         // Ifinite vertical scrolling
                         showsVerticalScrollIndicator={false}
 
@@ -166,8 +166,8 @@ const HomeScreen = ({ navigation }) => {
                             <ProductItem key={item.id} item={item} />
                         ))}
                     </ScrollView>
-                </View>
-            </SafeAreaView>
+                </ScrollView>
+            </ScrollView>
 
             {total === 0 ? (
                 null
