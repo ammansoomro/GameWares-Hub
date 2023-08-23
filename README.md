@@ -28,3 +28,10 @@ Getting started is a breeze:
 4. Launch the app with npm start.
 
 ## Screenshots
+<div style="display: flex; justify-content: center;">
+<img width="260" alt="Screenshot 2023-08-24 at 12 25 55 AM" src="https://github.com/ammansoomro/GameWares-Hub/assets/63865428/404480e5-b75c-447e-a7c0-16f4f43e9720">
+<img width="260" alt="Screenshot 2023-08-24 at 12 25 50 AM" src="https://github.com/ammansoomro/GameWares-Hub/assets/63865428/c43014ce-ab11-451e-a3db-d14b1c66bd35">
+<img width="260" alt="Screenshot 2023-08-24 at 12 25 37 AM" src="https://github.com/ammansoomro/GameWares-Hub/assets/63865428/d02d9e69-81bf-4ac7-939f-7a2a75103bc2">
+<img width="260" alt="Screenshot 2023-08-24 at 12 25 33 AM" src="https://github.com/ammansoomro/GameWares-Hub/assets/63865428/12e469a2-0c23-4cc4-a7d4-ebe6ae6a2d7f">
+<img width="260" alt="Screenshot 2023-08-24 at 12 25 29 AM" src="https://github.com/ammansoomro/GameWares-Hub/assets/63865428/83693966-6122-4957-ae83-75f9c27e39ce">
+</div>
